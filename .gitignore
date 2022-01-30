@@ -23,7 +23,7 @@ docs/.vuepress/dist
 abci-cli
 docs/node_modules/
 index.html.md
-
+debug-state.go
 scripts/wal2json/wal2json
 scripts/cutWALUntil/cutWALUntil
 
