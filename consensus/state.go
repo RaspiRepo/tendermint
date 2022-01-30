@@ -1014,7 +1014,7 @@ func (cs *State) enterNewRound(height int64, round int32) {
 	// we may need an empty "proof" block, and enterPropose immediately.
 	waitForTxs := cs.config.WaitForTxs() && round == 0 && !cs.needProofBlock(height)
 
-	cs.Logger.Debug("waitForTxs: %v",fmt.Sprintf("%v", waitForTxs));
+	cs.Logger.Debug("waitForTxs: %s",fmt.Sprintf("%v", waitForTxs));
 
 	if waitForTxs {
 		if cs.config.CreateEmptyBlocksInterval > 0 {
@@ -1024,7 +1024,7 @@ func (cs *State) enterNewRound(height int64, round int32) {
 				cstypes.RoundStepNewRound)
 		}
 	} else {
-		cs.Logger.Debug("enterPropose : %v", fmt.Sprintf("%v round %d", waitForTxs, round))
+		cs.Logger.Debug("enterPropose : %s", fmt.Sprintf("%v round %d", waitForTxs, round))
 		cs.enterPropose(height, round)
 	}
 }
@@ -1040,12 +1040,12 @@ func (cs *State) needProofBlock(height int64) bool {
 	if lastBlockMeta == nil {
 		panic(fmt.Sprintf("needProofBlock: last block meta for height %d not found", height-1))
 	}
-	_=hex.EncodeToString(cs.state.AppHash)
+	appHash := hex.EncodeToString(cs.state.AppHash)
 
-	// fmt.Println("cs.state.AppHash: ", appHash)
-	// fmt.Println("Chain ID ",cs.state.ChainID)
-	// fmt.Printf("need proof block\nlasthdr_apphash %v\n", lastBlockMeta.Header.AppHash)
-	// fmt.Printf("state.AppHash == Header.AppHash %v\n", !bytes.Equal(cs.state.AppHash, lastBlockMeta.Header.AppHash))
+	fmt.Println("cs.state.AppHash: ", appHash)
+	fmt.Println("Chain ID ",cs.state.ChainID)
+	fmt.Printf("need proof block\nlasthdr_apphash %v\n", lastBlockMeta.Header.AppHash)
+	fmt.Printf("state.AppHash == Header.AppHash %v\n", !bytes.Equal(cs.state.AppHash, lastBlockMeta.Header.AppHash))
 	// fmt.Printf("****** lastBlockMeta.Header\n",  lastBlockMeta.Header)
 	
 	return bytes.Equal(cs.state.AppHash, lastBlockMeta.Header.AppHash)
@@ -1122,7 +1122,7 @@ func (cs *State) isProposer(address []byte) bool {
 func (cs *State) defaultDecideProposal(height int64, round int32) {
 	var block *types.Block
 	var blockParts *types.PartSet
-	fmt.Println("defaultDecideProposal")
+
 	
 	// Decide on block
 	if cs.ValidBlock != nil {
