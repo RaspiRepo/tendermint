@@ -1014,11 +1014,11 @@ func (cs *State) enterNewRound(height int64, round int32) {
 	// we may need an empty "proof" block, and enterPropose immediately.
 	waitForTxs := cs.config.WaitForTxs() && round == 0 && !cs.needProofBlock(height)
 
-	cs.Logger.Debug("waitForTxs: %s",fmt.Sprintf("%v", waitForTxs));
+	// cs.Logger.Debug("waitForTxs: %s",fmt.Sprintf("%v", waitForTxs));
 
 	if waitForTxs {
 		if cs.config.CreateEmptyBlocksInterval > 0 {
-			cs.Logger.Debug("scheduleTimeout at waitForTxs %s", fmt.Sprintf("CreateEmptyBlocksInterval %d", cs.config.CreateEmptyBlocksInterval))
+			// cs.Logger.Debug("scheduleTimeout at waitForTxs %s", fmt.Sprintf("CreateEmptyBlocksInterval %d", cs.config.CreateEmptyBlocksInterval))
 
 			cs.scheduleTimeout(cs.config.CreateEmptyBlocksInterval, height, round,
 				cstypes.RoundStepNewRound)
