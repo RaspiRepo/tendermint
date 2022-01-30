@@ -975,7 +975,7 @@ func (cs *State) enterNewRound(height int64, round int32) {
 		logger.Debug("need to set a buffer and log message here for sanity", "start_time", cs.StartTime, "now", now)
 	}
 
-	logger.Debug("entering new round", "current", fmt.Sprintf("%v/%v/%v", cs.Height, cs.Round, cs.Step))
+	logger.Info("entering new round", "current", fmt.Sprintf("%v/%v/%v", cs.Height, cs.Round, cs.Step))
 
 	// increment validators if necessary
 	validators := cs.Validators
@@ -1041,8 +1041,11 @@ func (cs *State) needProofBlock(height int64) bool {
 		panic(fmt.Sprintf("needProofBlock: last block meta for height %d not found", height-1))
 	}
 	appHash := hex.EncodeToString(cs.state.AppHash)
+	logger := cs.Logger.With("needProofBlock : ", height)
 
-	fmt.Println("cs.state.AppHash: ", appHash)
+	logger.Info("Sku debug cs.state.AppHash: ", appHash)
+	logger.Info("SChain ID: ", cs.state.ChainID)
+	
 	fmt.Println("Chain ID ",cs.state.ChainID)
 	fmt.Printf("need proof block\nlasthdr_apphash %v\n", lastBlockMeta.Header.AppHash)
 	fmt.Printf("state.AppHash == Header.AppHash %v\n", !bytes.Equal(cs.state.AppHash, lastBlockMeta.Header.AppHash))
