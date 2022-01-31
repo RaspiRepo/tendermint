@@ -1014,7 +1014,7 @@ func (cs *State) enterNewRound(height int64, round int32) {
 	// we may need an empty "proof" block, and enterPropose immediately.
 	waitForTxs := cs.config.WaitForTxs() && round == 0 && !cs.needProofBlock(height)
 
-	// cs.Logger.Debug("waitForTxs: %s",fmt.Sprintf("%v", waitForTxs));
+	logger.Debug("waitForTxs: ",waitForTxs, "height ", height, "round", round, "needProofBlock flag ", !cs.needProofBlock(height));
 
 	if waitForTxs {
 		if cs.config.CreateEmptyBlocksInterval > 0 {
@@ -1024,7 +1024,7 @@ func (cs *State) enterNewRound(height int64, round int32) {
 				cstypes.RoundStepNewRound)
 		}
 	} else {
-		cs.Logger.Debug("enterPropose : %s", fmt.Sprintf("%v round %d", waitForTxs, round))
+		logger.Debug("enterPropose : round ", round, "waitForTxs ", waitForTxs)
 		cs.enterPropose(height, round)
 	}
 }
@@ -1043,14 +1043,7 @@ func (cs *State) needProofBlock(height int64) bool {
 	appHash := hex.EncodeToString(cs.state.AppHash)
 	logger := cs.Logger.With("needProofBlock : ", height)
 
-	logger.Info("Sku debug cs.state.AppHash: ", appHash)
-	logger.Info("SChain ID: ", cs.state.ChainID)
-	
-	fmt.Println("Chain ID ",cs.state.ChainID)
-	fmt.Printf("need proof block\nlasthdr_apphash %v\n", lastBlockMeta.Header.AppHash)
-	fmt.Printf("state.AppHash == Header.AppHash %v\n", !bytes.Equal(cs.state.AppHash, lastBlockMeta.Header.AppHash))
-	// fmt.Printf("****** lastBlockMeta.Header\n",  lastBlockMeta.Header)
-	
+	logger.Info("cs.state.AppHash:", appHash, "Chain ID",cs.state.ChainID)
 	return bytes.Equal(cs.state.AppHash, lastBlockMeta.Header.AppHash)
 }
 
