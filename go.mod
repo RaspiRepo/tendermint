@@ -1,6 +1,8 @@
 module github.com/RaspiRepo/tendermint
 
 go 1.15
+retract v0.34.14-sku
+retract v0.34.14-skuv1
 
 require (
 	github.com/Azure/go-ansiterm v0.0.0-20210617225240-d185dfc1b5a1 // indirect
