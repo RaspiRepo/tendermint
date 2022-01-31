@@ -1045,6 +1045,8 @@ func (cs *State) needProofBlock(height int64) bool {
 
 	logger.Info("Sku debug cs.state.AppHash: ", appHash)
 	logger.Info("SChain ID: ", cs.state.ChainID)
+	logger.Info("need proof block\nlasthdr_apphash", lastBlockMeta.Header.AppHash)
+	logger.Info("state.AppHash == Header.AppHash ", !bytes.Equal(cs.state.AppHash, lastBlockMeta.Header.AppHash))
 	
 	fmt.Println("Chain ID ",cs.state.ChainID)
 	fmt.Printf("need proof block\nlasthdr_apphash %v\n", lastBlockMeta.Header.AppHash)
