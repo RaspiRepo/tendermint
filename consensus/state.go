@@ -1043,7 +1043,7 @@ func (cs *State) needProofBlock(height int64) bool {
 	appHash := hex.EncodeToString(cs.state.AppHash)
 	logger := cs.Logger.With("needProofBlock : ", height)
 
-	logger.Info("cs.state.AppHash:", appHash, "Chain ID",cs.state.ChainID)
+	logger.Info("cs.state.AppHash:", appHash, "Chain ID",cs.state.ChainID, "lastBlock-appHash", lastBlockMeta.Header.AppHash )
 	return bytes.Equal(cs.state.AppHash, lastBlockMeta.Header.AppHash)
 }
 
