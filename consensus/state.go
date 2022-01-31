@@ -1043,7 +1043,20 @@ func (cs *State) needProofBlock(height int64) bool {
 	appHash := hex.EncodeToString(cs.state.AppHash)
 	logger := cs.Logger.With("needProofBlock : ", height)
 
+<<<<<<< HEAD
 	logger.Info("cs.state.AppHash:", appHash, "Chain ID",cs.state.ChainID)
+=======
+	logger.Info("Sku debug cs.state.AppHash: ", appHash)
+	logger.Info("SChain ID: ", cs.state.ChainID)
+	logger.Info("need proof block\nlasthdr_apphash", lastBlockMeta.Header.AppHash)
+	logger.Info("state.AppHash == Header.AppHash ", !bytes.Equal(cs.state.AppHash, lastBlockMeta.Header.AppHash))
+	
+	fmt.Println("Chain ID ",cs.state.ChainID)
+	fmt.Printf("need proof block\nlasthdr_apphash %v\n", lastBlockMeta.Header.AppHash)
+	fmt.Printf("state.AppHash == Header.AppHash %v\n", !bytes.Equal(cs.state.AppHash, lastBlockMeta.Header.AppHash))
+	// fmt.Printf("****** lastBlockMeta.Header\n",  lastBlockMeta.Header)
+	
+>>>>>>> 8155562b27ea808b0d8808106c96a94788b0e379
 	return bytes.Equal(cs.state.AppHash, lastBlockMeta.Header.AppHash)
 }
 
