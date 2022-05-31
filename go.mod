@@ -1,5 +1,5 @@
-// module github.com/tendermint/tendermint
-module github.com/RaspiRepo/tendermint
+module github.com/tendermint/tendermint
+// module github.com/RaspiRepo/tendermint
 
 go 1.16
 retract v0.34.14-sku
