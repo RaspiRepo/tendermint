@@ -1,5 +1,5 @@
-// module github.com/tendermint/tendermint
-module github.com/RaspiRepo/tendermint
+module github.com/tendermint/tendermint
+// module github.com/RaspiRepo/tendermint
 
 go 1.16
 
@@ -39,4 +39,5 @@ require (
 	golang.org/x/crypto v0.0.0-20210915214749-c084706c2272
 	golang.org/x/net v0.0.0-20211208012354-db4efeb81f4b
 	google.golang.org/grpc v1.45.0
+	// github.com/RaspiRepo/tendermint v0.34.19-patch
 )
