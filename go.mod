@@ -1,4 +1,5 @@
-module github.com/tendermint/tendermint
+// module github.com/tendermint/tendermint
+module github.com/RaspiRepo/tendermint
 
 go 1.16
 
