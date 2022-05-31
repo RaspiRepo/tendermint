@@ -1,7 +1,10 @@
-module github.com/tendermint/tendermint
-// module github.com/RaspiRepo/tendermint
+// module github.com/tendermint/tendermint
+module github.com/RaspiRepo/tendermint
 
 go 1.16
+retract v0.34.14-sku
+retract v0.34.14-skuv1
+retract v0.34.14-skuv2
 
 require (
 	github.com/BurntSushi/toml v1.1.0
